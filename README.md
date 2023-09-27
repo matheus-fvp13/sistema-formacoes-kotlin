@@ -30,7 +30,7 @@ classDiagram
     class Publication {
         -title: String
         -date: LocalDateTime
-        -content: String
+        -message: String
         -viewCount: Int
         -author: User
         -comments: List~Comment~
@@ -38,7 +38,7 @@ classDiagram
     }
     class Comment {
         -author: User
-        -content: String
+        -message: String
     }
     class Level {
         <<enumeration>>
@@ -63,7 +63,7 @@ classDiagram
     EducationalContent "1"*--"1" Forum
     EducationalContent "n"o--"1..n" Course
     Forum "1"*--"n" Publication
-    Publication "n"o--"1" User : follows
+    Publication "n"o--"n" User : follows
     Publication "1"*--"n" Comment
     Comment "n"--"1" User : makes
     Publication "n"o--"n" User : publishes
