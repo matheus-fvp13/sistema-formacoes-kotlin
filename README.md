@@ -6,67 +6,67 @@
 
 ```mermaid
 classDiagram
-    class Usuario {
-        -nome: String
+    class User {
+        -name: String
         -email: String 
-        -nivel: Int
-        -reputacao: Int
+        -level: Int
+        -reputation: Int
     }
-    class ConteudoEducacional {
-        -titulo: String
-        -duracao: Duration
-        -descricao: String
-        -nivel: Nivel
-        -cursos: List~Curso~
-        -usuariosMatriculados: List~Usuario~
+    class EducationalContent {
+        -title: String
+        -duration: Duration
+        -description: String
+        -level: Level
+        -courses: List~Course~
+        -enrolledUsers: List~User~
         -forum: Forum
     }
-    class Curso {
-        -titulo: String
-        -duracao: Duration
-        -nivel: Nivel
-        -aulas: List~Aula~
-        -instrutor: Usuario
+    class Course {
+        -title: String
+        -duration: Duration
+        -level: Level
+        -lessons: List~Lesson~
+        -instructor: User
     }
-    class Aula {
-        -titulo: String
-        -duracao: Duration
-        -urlVideo: String
+    class Lesson {
+        -title: String
+        -duration: Duration
+        -videoUrl: String
     }
     class Forum {
-        -publicacoes: List~Pubicacao~
+        -publications: List~Publication~
     }
-    class Publicacao {
-        -titulo: String
-        -data: LocalDateTime
-        -conteudo: String
-        -numeroVisualizacoes: Int
-        -autor: Usuario
-        -comentarios: List~Comentario~
-        -seguidores: List~Usuario~
+    class Publication {
+        -title: String
+        -date: LocalDateTime
+        -content: String
+        -viewCount: Int
+        -author: User
+        -comments: List~Comment~
+        -followers: List~User~
     }
-    class Comentario {
-        -autor: Usuario
-        -conteudo: String
+    class Comment {
+        -author: User
+        -content: String
     }
-    class Nivel {
+    class Level {
         <<enumeration>>
-        BASICO
-        INTERMEDIARIO
-        AVANCADO
+        BASIC
+        INTERMEDIATE
+        ADVANCED
     }
 
-    Usuario "n"--o"n" ConteudoEducacional : participa
-    ConteudoEducacional "n"o--"1..n" Curso
-    Curso "1"*--"1..n" Aula
-    Curso -- Nivel
-    ConteudoEducacional "1"*--"1" Forum
-    Forum "1"*--"n" Publicacao
-    Publicacao "n"o--"1" Usuario : segue
-    Publicacao "1"*--"n" Comentario
-    Comentario "n"--"1" Usuario : faz
-    Publicacao "n"o--"n" Usuario : publica
-    ConteudoEducacional -- Nivel
+    User "n"--o"n" EducationalContent : participates
+    EducationalContent "n"o--"1..n" Course
+    Course "1"*--"1..n" Lesson
+    Course -- Level
+    EducationalContent "1"*--"1" Forum
+    Forum "1"*--"n" Publication
+    Publication "n"o--"1" User : follows
+    Publication "1"*--"n" Comment
+    Comment "n"--"1" User : makes
+    Publication "n"o--"n" User : publishes
+    EducationalContent -- Level
    
 ```
 
