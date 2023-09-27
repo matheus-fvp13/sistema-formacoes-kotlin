@@ -13,24 +13,15 @@ classDiagram
         -reputation: Int
     }
     class EducationalContent {
-        -title: String
-        -duration: Duration
         -description: String
-        -level: Level
         -courses: List~Course~
         -enrolledUsers: List~User~
         -forum: Forum
     }
     class Course {
-        -title: String
-        -duration: Duration
-        -level: Level
         -lessons: List~Lesson~
-        -instructor: User
     }
     class Lesson {
-        -title: String
-        -duration: Duration
         -videoUrl: String
     }
     class Forum {
@@ -56,17 +47,28 @@ classDiagram
         ADVANCED
     }
 
-    User "n"--o"n" EducationalContent : participates
-    EducationalContent "n"o--"1..n" Course
+    class Content {
+        -title: String
+        -duration: duration
+        -level: Level
+        -instructor: User
+    }
+
+    Content "n"--"1" Level
+    Content <|-- EducationalContent
+    Content <|-- Course
+    Content <|-- Lesson
+
     Course "1"*--"1..n" Lesson
-    Course -- Level
     EducationalContent "1"*--"1" Forum
+    EducationalContent "n"o--"1..n" Course
     Forum "1"*--"n" Publication
     Publication "n"o--"1" User : follows
     Publication "1"*--"n" Comment
     Comment "n"--"1" User : makes
     Publication "n"o--"n" User : publishes
-    EducationalContent -- Level
+    User "n"--o"n" EducationalContent : participates
+    
    
 ```
 
