@@ -1,9 +1,6 @@
 package application
 
 import domain.*
-import domain.enumeration.Level
-import java.time.Duration
-import java.time.LocalDateTime
 
 fun main() {
 
