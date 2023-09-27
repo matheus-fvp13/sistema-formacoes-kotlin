@@ -1,9 +1,6 @@
 package application
 
-import domain.Course
-import domain.Lesson
-import domain.Publication
-import domain.User
+import domain.*
 import domain.enumeration.Level
 import java.time.Duration
 import java.time.LocalDateTime
@@ -29,10 +26,15 @@ fun main() {
     println(course1.getLessons())*/
 
 
-    val publication = Publication("Duvidas em css", LocalDateTime.now(), "Duvida no tópico abc", user3)
+    val publication = Publication("Duvidas em css", "Duvida no tópico abc", user3)
     publication.addComent(user2, "Solução 1")
     publication.addFollower(user2)
     publication.addFollower(user1)
     for(follower in publication.getFollowers()) println(follower)
+
+    val forum = Forum()
+    forum.addPublication("Duvidas em css", "Duvida no tópico abc", user3)
+    println(forum.getPublications()[0].addFollower(user1))
+    println(forum.getPublications()[0].getFollowers())
 
 }
