@@ -1,8 +1,6 @@
 # Sistema de formações em Kotlin
 
-# Sobre o projeto
-
-# Diagrama de classes
+## Diagrama de classes
 
 ```mermaid
 classDiagram
@@ -72,11 +70,11 @@ classDiagram
    
 ```
 
-# Tecnologias utilizadas
+## Tecnologias utilizadas
 
-# Como executar o projeto
+## Como executar o projeto
 
-# Autor
+## Autor
 Matheus Fernando Vieira Pinto.
 
 https://www.linkedin.com/in/matheus-fvp/
